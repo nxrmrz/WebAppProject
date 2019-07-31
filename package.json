@@ -1,0 +1,40 @@
+{
+  "name": "jncg_finalproject",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://jdam117@bitbucket.org/jdam117/jncg_finalproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/jdam117/jncg_finalproject#readme",
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^11.1.1",
+    "bcrypt": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "fs": "0.0.1-security",
+    "jimp": "^0.5.6",
+    "jquery": "^3.3.1",
+    "osenv": "^0.1.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-session": "^1.0.2",
+    "password-hash": "^1.2.2",
+    "sqlite3": "^4.0.3"
+  },
+  "devDependencies": {},
+  "description": "COMPSCI 719 final project",
+  "express-session": "^1.15.6",
+  "passport": "^0.4.0",
+  "passport-local": "^1.0.0",
+  "password-hash": "^1.2.2",
+  "sqlite3": "^4.0.2"
+}
