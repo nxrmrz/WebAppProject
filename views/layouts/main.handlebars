@@ -1,0 +1,85 @@
+<!-- main layout -> to be changed later -->
+<!DOCTYPE html>
+<html>
+
+{{!-- site header --}}
+
+<head>
+    <meta charset="utf-8">
+    <meta lang="en">
+
+    {{!-- Bootstrap --}}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    {{!-- Styling --}}
+    <link rel="stylesheet" type="text/css" href="/style/theme.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous|Ubuntu:400,400i,700,700i" rel="stylesheet">
+
+    {{!-- WSIWYG editor --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+
+    {{!-- JS --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <title>{{pageName}}</title>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid mx-auto my-0" id="blogHeader">
+        <h1 class="display-4 text-center" id="headerText">Gitting through DCCXIX</h1>
+    </div>
+
+    <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div class="collapse" id="menu">
+        <div class="bg-dark p-4">
+            <ul>
+                <a href="/" formmethod="">
+                    <h4 class="text-white">Home</h4>
+                </a>
+
+                {{#if username}}
+                <a href="/logout">
+                    <h4 class="text-white">Logout</h4>
+                </a>
+                <a href="/newpost">
+                    <h4 class="text-white">Post a blog entry</h4>
+                </a>
+                <a href="/userprofile">
+                    <h4 class="text-white">Your profile</h4>
+                </a>
+                {{else}}
+                <a href="/login">
+                    <h4 class="text-white">Login</h4>
+                </a>
+                {{/if}}
+            </ul>
+
+        </div>
+    </div>
+
+
+    {{{body}}}
+
+</body>
+
+<div class="footer-fixed-bottom text-center" id="footer">
+    <br>
+    <small>
+        <p>This blogthing is built by Team JNCG, for lack of a better name. Images by ourselves and from <a href="freepik.com">Freepik</a>.
+            Survival aided by caffeine and too many $5 Tank smoothies.</p>
+    </small>
+</div>
+
+</html>

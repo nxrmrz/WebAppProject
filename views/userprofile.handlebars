@@ -1,0 +1,77 @@
+<div class="container-fluid text-center">
+    <br>
+    <h1 class="margin">{{user.username}}</h1>
+    <img src="../avatars/{{user.avatar}}" class="img-responsive rounded-circle margin" style="display:inline" width="300"
+        height="300" />
+    <h3>{{user.firstname}} {{user.lastname}}</h3>
+    <p><strong>Born: </strong>{{user.birthday}}</p>
+    <p><strong>From: </strong>{{user.country}}</p>
+    <p>{{user.bio}}</p>
+
+    {{!-- If the user is logged in --}}
+    <button class="btn btn-outline-warning" data-toggle="collapse" data-target="#editprofile">Edit Profile</button>
+</div>
+<div id="editprofile" class="collapse">
+    <br>
+    <div class="card border-dark mx-auto w-75">
+        <h5 class="card-header">Edit your profile</h5>
+        <div class="card-body">
+            <form action= "/usersubmit" enctype="multipart/form-data" method = "POST">
+
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input class="form-control" type="text" id="username" name="username">
+                        <p id="userNameStatus"></p>
+
+                        <label for="password">Password:</label>
+                        <input class="form-control" type="password" id="password" name="password">
+                        <br>
+                        <label for="firstname">First Name:</label>
+                        <input class="form-control" type="text" id="firstname" name="firstname">
+                        <br>
+                        <label for="lastname">Last Name:</label>
+                        <input class="form-control" type="text" id="lastname" name="lastname">
+                        <br>
+                        <label for="birthday">Date of Birth:</label>
+                        <input class="form-control" type="date" id="birthday" name="birthday">
+                        <br>
+                        <label for="country">Country:</label>
+                        <input class="form-control" type="text" pattern="[A-Za-z]{2}" id="country" maxlength="2"
+                            placeholder="Enter 2-digit country code" name="country">
+                        <br>
+                        <label for="bio">A short description about yourself:</label>
+                        <textarea class="form-control" rows="" cols="" maxlength="300" id="bio" name="bio"></textarea>
+                        <br>
+                        <p>Select a cute animal as your avatar...</p>
+                        <label class="radio-inline">
+                            <input type="radio" name="avatarselect" value="avatar1.jpg" id="avatar1.jpg"> <img src="../avatars/avatar1.jpg"
+                                width="100" height="100" />
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="avatarselect" value="avatar2.jpg" id="avatar2.jpg"> <img src="../avatars/avatar2.jpg"
+                                width="100" height="100" />
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="avatarselect" value="avatar3.jpg" id="avatar3.jpg"> <img src="../avatars/avatar3.jpg"
+                                width="100" height="100" />
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="avatarselect" value="avatar4.jpg" id="avatar4.jpg"> <img src="../avatars/avatar4.jpg"
+                                width="100" height="100" />
+                        </label>
+                         <p>... or upload your own</p>
+                        {{!-- <form action="/action_page.php"> --}}
+                            <input class="form-control-file" type="file" id="avatarupload" name="avatarselect" accept=".jpg,.jpeg,.bmp,.png">
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" id="submitBtn" class="btn btn-outline-success" formmethod="POST" formaction="/userupdate">Submit</button>
+                        <button type="reset" class="btn btn-outline-info">Clear</button>
+                        <button type="submit" id="deleteBtn" class="btn btn-outline-danger" formmethod="GET" formaction="/userdelete">Delete My Account</button>
+                    </div>
+
+                </form>
+        </div>
+    </div>
+</div>

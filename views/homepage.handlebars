@@ -1,0 +1,91 @@
+{{!-- for each new post, do the following --}}
+{{#if articles}}
+{{#each articles}}
+<div class="row" id="newArticleSpace">
+    <table>
+        <tr>
+            <form class="form-inline" method="POST">
+                <div class="container mx-auto mt-4" id="articleHolder">
+                    <h1 id="newArticleHeading">{{title}}</h1>
+                    <hr>
+                    {{!-- {{#if username}}
+                    <img src="../avatars/{{user.avatar}}" class="img-responsive rounded-circle" width="60" height="60">
+                    <strong>Posted by {{username}} on {{postDate}}</strong>
+                    {{/if}} --}}
+                    <p>{{{content}}}</p>
+                    <br>
+
+                    {{!-- Article Edit and Delete Buttons --}}
+                    <button type="submit" class="btn btn-outline-light" formaction="/delete/{{articleid}}">Delete my
+                        article</button>
+                    <button type="submit" class="btn btn-outline-light" formaction="/edit/{{articleid}}">Edit my
+                        article</button>
+
+                    {{!-- Article Commenting Buttons --}}
+                    <button type="button" class="btn btn-outline-light" id="addCommentButton" data-toggle="collapse"
+                        data-target="#commentbox">Add a comment</button>
+                    <button type="button" class="btn btn-outline-light" id="viewCommentbutton" data-toggle="collapse"
+                        data-target="#allComments{{articleid}}">View comments</button>
+                    
+                    {{!-- Viewing the comment input textbox --}}
+                    <div class="container mx-auto mt-4 collapse" id="commentbox">
+                        <h3>Comment on this article</h3>
+                        <br>
+                        <input class="form-control" type="text" placeholder="Enter a comment" id="comment" name="comment">
+                        <br>
+                        <button type="submit" class="btn btn-outline-light" id="postcomment" formaction="/addComment/{{articleid}}">Post my comment</button>
+                        </div> 
+                            </form>
+                                </tr> 
+                            
+                            <tr>
+                            {{!-- Viewing the comments --}}
+                            <div class="container mx-auto mt-4 collapse" id="allComments{{articleid}}">
+                                <h4>Now viewing this article's comment(s)...</h4>
+                                <hr>
+                                {{#if comments}}{{#each comments}}
+                                {{!-- For each comment, do the following --}}
+                                <p>{{content}}</p>
+                                <strong>Comment posted by {{username}}</strong><img src="../avatars/{{user.avatar}}"
+                                    class="img-responsive rounded-circle" width="60" height="60">
+                                <hr id="commentseparator">
+
+                                {{!-- comment edit and delete buttons --}}
+                                <button type="submit" class="btn btn-outline-light" formaction="/deleteComment/{{commentid}}">Delete
+                                    my
+                                    comment</button>
+                                <button type="submit" class="btn btn-outline-light" formaction="/editComment/{{commentid}}">Edit
+                                    my comment</button>
+                                {{/each}}{{/if}}
+                            </div>
+        </tr>
+    </table>
+</div>
+
+{{/each}}
+{{else}}
+<div align="center">
+    <br>
+    <img src="/style/catcomp.png" class="responsive">
+    <h2>No articles have been posted (yet)!</h2>
+    <p>Maybe you'd like to write one?</p>
+</div>
+{{/if}}
+
+<script>
+    $(document).ready function () {
+        $('#viewCommentButton').click(function () {
+            $.ajax ({
+                type: 'GET',
+                url: '/'
+
+            })
+
+            }
+        }
+</script>
+
+ type: 'POST',
+                    url: '/usercheck',
+                    data: { username: uName },
+                    success: function (response) {

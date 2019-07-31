@@ -1,0 +1,32 @@
+<br>
+<div class="container" id="blogPostingContainer">
+    <h1 id="blogEntry">Create a new blog entry</h1>
+    <br>
+    <form>
+        {{!-- post title --}}
+        <label for="posttitle">Your post title</label>
+        <input class="form-control" type="text" id="newPostTitle" name="posttitle" value="{{title}}">
+        <br>
+        {{!-- post content --}}
+        <label for="postcontent">Now, write some content...</label>
+        <textarea name="postcontent" id="newArticleEditor">{{content}}</textarea>
+    {{!-- code for using ckeditor --}}
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#newArticleEditor'), {
+                removePlugins: ['EasyImage', 'UploadAdapter'],
+                toolbar: ['heading', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'undo', 'redo']
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        </script>
+
+        <br>
+        {{#if title}}
+        <input class="btn btn-outline-success" type="submit" value="Post your edit!" id="articleEditButton" formaction="/afterEdit/{{articleid}}" formmethod="POST">
+        {{else}}
+        <input class="btn btn-outline-success" type="submit" value="Post your new entry!" id="articleSubmitButton" formaction="/postsubmit" formmethod="POST">
+        {{/if}}
+    </form>
+</div>

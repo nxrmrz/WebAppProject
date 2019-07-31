@@ -1,0 +1,35 @@
+{{!-- for each new post, do the following --}}
+<div class="row" id="newArticleSpace">
+    <form class="form-inline" method="POST">
+        <div class="container mx-auto mt-4" id="articleHolder">
+            <h1 id="newArticleHeading"><a id="articleLink" href="/articles/{{articleid}}">{{article.title}}</a></h1>
+            <hr>
+            {{#if username}}
+            <img src="../avatars/{{user.avatar}}" class="img-responsive rounded-circle" width="60" height="60">
+            <strong>Posted by {{username}} on {{postDate}}</strong>
+            {{/if}}
+            <p>{{{article.content}}}</p>
+            <br>
+            {{#if validuser}}
+            <button type="submit" class="btn btn-outline-light" formaction="/delete/{{articleid}}">Delete my article</button>
+            <button type="submit" class="btn btn-outline-light" formaction="/edit/{{articleid}}">Edit my article</button>
+            {{/if}}
+            {{#if comments}}
+            <button type="button" class="btn btn-outline-light" id="commentbutton" data-toggle="collapse" data-target="#allComments{{articleid}}">View comments</button>
+            {{else}}
+            <button type="submit" class="btn btn-outline-light" formaction="{{}}/{{comment}}">Post a new comment</button>
+             {{/if}}
+        </div>
+    </form>
+        <div class="container mx-auto mt-4 collapse" id="allComments{{articleid}}">
+            <br>
+            <h4>Now viewing this article's comment(s)...</h4>
+            <hr>
+            {{!-- For each comment, do the following --}}
+            {{#each comments}}
+            <p>{{this.content}}</p>
+            {{/each}}
+            <strong>Comment posted by {{username}}</strong><img src="../avatars/{{user.avatar}}" class="img-responsive rounded-circle" width="60" height="60">
+            <hr id="commentseparator">
+        </div>
+</div>
